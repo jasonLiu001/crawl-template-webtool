@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="../../css/main.css" type="text/css"/>
+    <script src="../../js/jQuery.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../js/knockout.js" type="text/javascript"></script>
+    <script src="../../js/develop-main.js" type="text/javascript"></script>
+    <title>开发人员工具箱</title>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1>工具箱<small>开发人员内部使用</small></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div role="tabpanel">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#md5_url" aria-controls="md5_url" role="tab" data-toggle="tab">MD5模板URL</a></li>
+                    <li role="presentation"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">其他工具</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="md5_url">
+                        <div class="row addRowTopMargin">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>模板URL</label>
+                                                    <input id="md5_template_url" class="form-control">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>MD5结果</label>
+                                                    <textarea id="md5_textArea" class="form-control" rows="2"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 text-right">
+                                                <button type="button" id="md5_encrypt" class="btn btn-primary">MD5加密</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="other">
+                        <div class="row addRowTopMargin">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        待添加....
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

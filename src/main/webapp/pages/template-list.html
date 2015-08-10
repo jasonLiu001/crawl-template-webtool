@@ -1,0 +1,344 @@
+<div class="row addRowTopMargin">
+<div class="col-md-12">
+
+<!--内容页的固定属性-->
+<!--列表外链接-->
+<div class="row" data-bind="with: listOutLinkViewModel">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">列表外链接</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--Jsoup选择器内容-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>选择器</label>
+                                    <input type="text" data-bind="value: selector" class="form-control" placeholder="选择器">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>选择器属性</label>
+                                    <select class="form-control" data-bind="options: selectorAttr, value:selectorAttrSelected"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--自定义选择器属性-->
+                        <div class="row">
+                            <div class="col-md-6"  data-bind="visible: showOtherSelectorInput">
+                                <div class="form-group" data-bind="if: showOtherSelectorInput">
+                                    <label>自定义选择器属性</label>
+                                    <input type="text" class="form-control"
+                                           data-bind="value: otherSelector"
+                                           placeholder="自定义选择器属性">
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--列表分页-->
+<div class="row" data-bind="with: listPaginationViewModel">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">列表分页</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--分页类型和分页的Url-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>分页选择器功能</label>
+                                    <select class="form-control" data-bind="options: paginationType, value: paginationTypeSelected"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>分页Url</label>
+                                    <input type="text" data-bind="value: paginationUrl" class="form-control" placeholder="分页Url">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Jsoup选择器内容-->
+                        <div class="row" data-bind="visible: showSelector">
+                            <div class="col-md-6" data-bind="if: showSelector">
+                                <div class="form-group">
+                                    <label>选择器</label>
+                                    <input type="text" data-bind="value: selector" class="form-control" placeholder="选择器">
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="if: showSelector">
+                                <div class="form-group">
+                                    <label>选择器属性</label>
+                                    <select class="form-control" data-bind="options: selectorAttr, value:selectorAttrSelected"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--自定义选择器属性-->
+                        <div class="row">
+                            <div class="col-md-6"  data-bind="visible: showOtherSelectorInput">
+                                <div class="form-group" data-bind="if: showOtherSelectorInput">
+                                    <label>自定义选择器属性</label>
+                                    <input type="text" class="form-control"
+                                           data-bind="value: otherSelector"
+                                           placeholder="自定义选择器属性">
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+
+                        <!--过滤器内容 格式化器内容-->
+                        <div class="row" data-bind="visible: showFilter">
+                            <div class="col-md-6" data-bind="if: showFilter">
+                                <div class="form-group">
+                                    <label>过滤器类别</label>
+                                    <select class="form-control" data-bind="options: filterCategory, value:filterCategorySelected"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="visible: showMatchFilter">
+                                <div class="form-group" data-bind="if: showMatchFilter">
+                                    <label>
+                                        匹配内容
+                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-contentHelp">常用正则表达式</button>
+                                    </label>
+                                    <input type="text" data-bind="value: filter" class="form-control" placeholder="正则表达式,匹配特定位置的字符">
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="visible: showRemoveFilter">
+                                <div class="form-group" data-bind="if: showRemoveFilter">
+                                    <label>
+                                        移除内容
+                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-contentHelp">常用正则表达式</button>
+                                    </label>
+                                    <input type="text" data-bind="value: filter" class="form-control" placeholder="正则表达式,移除特定位置的字符">
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="visible: showReplaceFilter">
+                                <div class="form-group" data-bind="if: showReplaceFilter">
+                                    <label>
+                                        替换前内容
+                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-contentHelp">常用正则表达式</button>
+                                    </label>
+                                    <input type="text" data-bind="value: filter" class="form-control" placeholder="正则表达式,替换前的字符">
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="visible: showReplaceFilter">
+                                <div class="form-group" data-bind="if: showReplaceFilter">
+                                    <label>替换后内容</label>
+                                    <input type="text" data-bind="value: filterReplaceTo" class="form-control" placeholder="替换后内容">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--分页选择器对应功能-->
+                        <div class="row">
+                            <div class="col-md-6" data-bind="visible: showStart">
+                                <div class="form-group" data-bind="if: showStart">
+                                    <label>分页开始编号</label>
+                                    <input type="text" data-bind="value: start" class="form-control" placeholder="分页开始编号">
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="visible: showLastNumber">
+                                <div class="form-group" data-bind="if: showLastNumber">
+                                    <label>分页结束编号</label>
+                                    <input type="text" data-bind="value: lastNumber" class="form-control" placeholder="分页开始编号">
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="visible: showInterval">
+                                <div class="form-group" data-bind="if: showInterval">
+                                    <label>分页进步数值</label>
+                                    <input type="text" data-bind="value: interval" class="form-control" placeholder="分页进步数值">
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-bind="visible: showRecords">
+                                <div class="form-group" data-bind="if: showRecords">
+                                    <label>页面记录条数</label>
+                                    <input type="text" data-bind="value: records" class="form-control" placeholder="页面记录条数">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>分页链接中动态变化字符</label>
+                                    <input type="text" data-bind="value: currentString" class="form-control" placeholder="分页链接中动态变化字符">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>替换分页链接中动态变化字符为</label>
+                                    <input type="text" data-bind="value: replaceTo" class="form-control" placeholder="替换分页链接中动态变化字符为">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--自定义属性-->
+<div class="row" data-bind="with: listCustomerAttrViewModel">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <!--列表页的自定义属性-->
+                <div class="row" data-bind="foreach: regions">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <button type="button" data-bind="click: $parent.removeItem" class="close"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                自定义属性
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!--目标名称-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>属性名称标识</label>
+                                                    <input type="text" class="form-control"
+                                                           data-bind="value: target"
+                                                           name="attributeName"
+                                                           placeholder="title,content,publishTime....">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <hr/>
+                                            </div>
+                                        </div>
+
+                                        <!--Jsoup选择器内容-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>选择器</label>
+                                                    <input type="text" class="form-control"
+                                                           data-bind="value: selector"
+                                                           placeholder="选择器">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>选择器属性</label>
+                                                    <select class="form-control" data-bind="options: attr,value: attrSelected"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--自定义选择器属性-->
+                                        <div class="row">
+                                            <div class="col-md-6"  data-bind="visible: showOtherSelectorInput">
+                                                <div class="form-group" data-bind="if: showOtherSelectorInput">
+                                                    <label>自定义选择器属性</label>
+                                                    <input type="text" class="form-control"
+                                                           data-bind="value: otherSelector"
+                                                           placeholder="自定义选择器属性">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6"></div>
+                                        </div>
+
+                                        <!--过滤器内容-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>过滤器类别</label>
+                                                    <select class="form-control" data-bind="options: filterCategory, value:filterCategorySelected"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" data-bind="visible: showMatchFilter">
+                                                <div class="form-group" data-bind="if: showMatchFilter">
+                                                    <label>
+                                                        匹配内容
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-contentHelp">常用正则表达式</button>
+                                                    </label>
+                                                    <input type="text" data-bind="value: filter" class="form-control" placeholder="正则表达式,匹配特定位置的字符">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" data-bind="visible: showRemoveFilter">
+                                                <div class="form-group" data-bind="if: showRemoveFilter">
+                                                    <label>
+                                                        移除内容
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-contentHelp">常用正则表达式</button>
+                                                    </label>
+                                                    <input type="text" data-bind="value: filter" class="form-control" placeholder="正则表达式,移除特定位置的字符">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" data-bind="visible: showReplaceFilter">
+                                                <div class="form-group" data-bind="if: showReplaceFilter">
+                                                    <label>
+                                                        替换前内容
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-contentHelp">常用正则表达式</button>
+                                                    </label>
+                                                    <input type="text" data-bind="value: filter" class="form-control" placeholder="正则表达式,替换前的字符">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" data-bind="visible: showReplaceFilter">
+                                                <div class="form-group" data-bind="if: showReplaceFilter">
+                                                    <label>替换后内容</label>
+                                                    <input type="text" data-bind="value: filterReplaceTo" class="form-control" placeholder="替换后内容">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--格式化器内容-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>格式化器类别</label>
+                                                    <select class="form-control" data-bind="options: formatCategory, value:formatCategorySelected"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>格式化表达式</label>
+                                                    <input type="text" class="form-control" data-bind="value: formatter"
+                                                           placeholder="格式化字符，支持正则表达式">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--测试按钮-->
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-default" data-bind="click: addItem">添加属性</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--验证列表页-->
+<div class="row">
+    <div class="col-md-12 text-right">
+        <button data-bind="click: verifyListContent" class="btn btn-primary">验证列表页</button>
+        <!--<button data-bind="click: verifyNewContent, visible: showSearchTemplateBtn" class="btn btn-primary">验证内容页</button>-->
+    </div>
+</div>
+
+</div>
+</div>

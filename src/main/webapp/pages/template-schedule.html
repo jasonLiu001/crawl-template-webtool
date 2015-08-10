@@ -1,0 +1,72 @@
+<div class="row addRowTopMargin">
+    <div class="col-md-12">
+
+        <!--调度配置-->
+        <div class="row" data-bind="with: scheduleDispatchViewModel">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">调度配置</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" data-bind="checked: useProxy">是否使用代理
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>周期</label>
+                                    <select class="form-control" data-bind="options: periods, value: periodsSelected"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>调度时序</label>
+                                    <input type="text" class="form-control" data-bind="value: sequence" placeholder="取值为1到100之间的整数">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--增量配置-->
+        <div class="row" data-bind="with: templateIncreaseViewModel">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">增量配置</div>
+                    <div class="panel-body">
+                        <!--增量配置-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>周期</label>
+                                    <select class="form-control" data-bind="options: periods, value: periodsSelected"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>页数</label>
+                                    <input type="text" class="form-control" data-bind="value: pageCounts" placeholder="页数">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>页序</label>
+                                    <select class="form-control" data-bind="options: pageSort, value:pageSortSelected"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
